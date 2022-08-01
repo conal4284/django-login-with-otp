@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<body align="center">
+  <h2>Login</h2>
+  <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+    {% endfor %}
+    {% for field in form %}
+      {% if field.id_for_label == 'id_mobile_number' %}
+        <label>Enter Your Mobile Number</label>
+        <input type="text" class="form-control" id="id_mobile_number" name="mobile_number" placeholder="Registered Mobile Number">
+        {% if field.errors %}
+            {% for error in field.errors %} 
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <br><br>
+    <div>
+      <button type="submit">
+        Send OTP
+      </button>
+    </div>
+  </form>
+</body>
+</html>

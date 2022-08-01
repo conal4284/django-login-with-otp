@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<body align="center">
+  <h2>Please enter the OTP</h2>
+  <form class="js-validation-signin" method="POST" action="{% url 'otp' %}">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.id_for_label == 'id_otp' %}
+      <div class="mb-4">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" id="id_otp" name="otp" placeholder="OTP">
+          <span class="input-group-text">
+            <i class="fa fa-mobile"></i>
+          </span>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+    <br><br>
+    <div>
+      <button type="submit" class="btn btn-hero btn-primary">
+        <i class="fa fa-fw fa-sign-in-alt opacity-50 me-1"></i> Verify OTP
+      </button>
+    </div>
+  </form>
+</body>
+</html>
