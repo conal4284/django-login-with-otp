@@ -29,31 +29,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def save(self, *args, **kwargs):
-        # if self.mobile_number:
-        #     self.otp = str(random.randint(100000, 999999))
         super(CustomUser, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.email
 
-@receiver(post_save, sender=CustomUser)
-def send_otp(sender, instance, created, **kwargs):
-    if created:
-        print(instance.mobile_number, instance.otp)
-# @receiver(post_save, sender=Client)
-# def createSuperUser(sender, instance, created, *args, **kwargs):
+# @receiver(post_save, sender=CustomUser)
+# def send_otp(sender, instance, created, **kwargs):
 #     if created:
-#         invalidInputs = ["", None]
-
-#         user = CustomUser(
-#             username = "",
-#             email = "user1@mail.com",
-#             first_name = "",
-#             last_name = "",
-#         )
-
-#         user.set_password("helloworld")
-#         user.is_superuser = True
-#         user.is_staff = True
-#         user.save()
-#         return user
+#         print(instance.mobile_number, instance.otp)

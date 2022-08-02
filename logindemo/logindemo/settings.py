@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tsm&4*g^-o00e0c7sx@mt3(7+v@g5ujb@p!_8q+z6=7oc_j07d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'logindemo.wsgi.application'
 
 AUTH_USER_MODEL = 'user.CustomUser'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/user/login/'
+LOGIN_URL = '/'
 
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',
                             'user.authbackend.CustomAuthBackend',)
